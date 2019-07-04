@@ -1,6 +1,7 @@
 class Field {
 	constructor(canvas, next) {
 	this.level = 1; //
+	this.Level = 1; //
 	this.cnt = 0;//
 	this.tick = 1000;//
 	this.tickStep = 1.2;
@@ -54,6 +55,7 @@ class Field {
 	}
 
 	set Tick(value) {
+
 		value = Math.floor(value);
 		if(value>1000)
 			this.tick = 1000;
@@ -74,6 +76,8 @@ class Field {
 			this.level = 1;
 		else
 			this.level = value;
+		console.log(this.Level);
+		level.innerHTML = 'уровень: ' + this.Level;
 	}
 	
 	drawGrid(context) {
@@ -456,7 +460,7 @@ class Field {
 			'boolField' : this.boolField,
 			'colorField' : this.colorField,
 			'cnt' : this.cnt,
-			'level' : this.level,
+			'level' : this.Level,
 			'indexNext' : this.indexNext,
 			'newFigure' : this.newFigure,
 		};
@@ -473,7 +477,7 @@ class Field {
 			field.boolField = exportData.boolField;
 			field.colorField = exportData.colorField;
 			field.cnt = exportData.cnt;
-			field.level = exportData.level;
+			field.Level = exportData.level;
 			field.indexNext = exportData.indexNext;
 			field.newFigure.arr = exportData.newFigure.arr;
 			field.newFigure.x = exportData.newFigure.x;
@@ -587,6 +591,7 @@ let typeFigures = [
 let color = ['rgb(0,255,0)', 'rgb(255,0,0)', 'rgb(100,0,100)', 'rgb(255,100,0)', 'rgb(0,0,255)', 'rgb(0,100,100)', 'rgb(150,46,88)'];
 let canvas = document.getElementById('canvas');
 let next = document.getElementById('next');
+let level = document.getElementById('level');
 
 if (!canvas.getContext) {
 	throw '';
