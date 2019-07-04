@@ -149,8 +149,8 @@ class Field {
 		//console.log(startX + ' ' + startY+' '+width);
 		//context.clearRect(startX, startY, width, width);
 		context.fillRect(startX * this.step, startY * this.step, width * this.step, width * this.step);
-		// wtf?
-		this.redrawGridRect(context, startX, startY, width);
+		//
+		this.redrawGridRect(context, startX * this.step, startY * this.step, width * this.step);
 		let lenY = this.boolField.length;
 		let lenX = this.boolField[0].length;
 		for(let y = startY; y<width + startY; y++)
@@ -166,6 +166,7 @@ class Field {
 	}
 	redrawGridRect(context, startX, startY, width)
 	{
+		//console.log(width);
 		context.lineWidth = 2;
 		context.strokeStyle = "rgb(100,100,100)";
 		for (let x = startX; x < width; x += this.step) {
@@ -295,7 +296,7 @@ class Field {
 	}
 	
 	ticker() {
-		let currTime = (new Date()).getMilliseconds();
+		//let currTime = (new Date()).getMilliseconds();
 		if(this.newFigure.falled)
 		{
 			if(!this.fl)
@@ -328,7 +329,7 @@ class Field {
 			
 			//this.drawField(this.context);
 		}
-		console.log('ticker(): ' + ((new Date()).getMilliseconds() - currTime));
+		//console.log('ticker(): ' + ((new Date()).getMilliseconds() - currTime));
 	}
 	
 	stopGame()
